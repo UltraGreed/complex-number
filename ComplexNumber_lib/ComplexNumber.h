@@ -10,10 +10,23 @@
 template<typename T> requires std::integral<T> || std::floating_point<T>
 class ComplexNumber {
 public:
-    T real;
-    T imag;
+    explicit ComplexNumber(T a = 0, T b = 0, bool isPolar = false) noexcept;
 
-    ComplexNumber(T real = 0, T imag = 0);
+    ComplexNumber(ComplexNumber<T> const &other) noexcept;
+
+    ComplexNumber(ComplexNumber<T> &&other) noexcept;
+
+    ComplexNumber& operator=(ComplexNumber<T> const &other) noexcept;
+
+    ComplexNumber& operator=(ComplexNumber<T> &&other) noexcept;
+
+    T getReal() const noexcept;
+
+    T getImag() const noexcept;
+
+    void setReal(T newReal) noexcept;
+
+    void setImag(T newImag) noexcept;
 
     auto operator+(ComplexNumber<T> &other);
 
@@ -37,9 +50,25 @@ public:
 
     auto operator==(ComplexNumber<T> &other);
 
-    float length();
+    auto getLength();
 
-    auto operator<<(std::ostream& os);
+    auto getArg();
+
 private:
-    double epsilon = 0.0001;
+    double EPSILON = 0.0001;
+
+    T real;
+    T imag;
+
+    double is_no_length = true;
+    double is_no_arg = true;
+
+    double length = 0;
+    double arg = 0;
 };
+
+template<typename T>
+requires std::integral<T> || std::floating_point<T>
+std::ostream& operator<<(std::ostream &os, const ComplexNumber<T> &cn);
+
+#include "ComplexNumber.tpp"

@@ -15,102 +15,102 @@ TEST(CreationTests, CreationTest2) {
     ComplexNumber<long long> number4(1, 2);
 }
 
-TEST(AritmeticTests, AdditionTest) {
+TEST(ArithmeticTests, AdditionTest) {
     ComplexNumber<int> number1(1, 2);
     ComplexNumber<int> number2(3, 4);
     ComplexNumber<int> number3 = number1 + number2;
-    ASSERT_EQ(number3.real, 4);
-    ASSERT_EQ(number3.imag, 6);
+    ASSERT_EQ(number3.getReal(), 4);
+    ASSERT_EQ(number3.getImag(), 6);
 }
 
-TEST(AritmeticTests, SubstractionTest) {
+TEST(ArithmeticTests, SubstractionTest) {
     ComplexNumber<int> number1(1, 2);
     ComplexNumber<int> number2(3, 4);
     ComplexNumber<int> number3 = number1 - number2;
-    ASSERT_EQ(number3.real, -2);
-    ASSERT_EQ(number3.imag, -2);
+    ASSERT_EQ(number3.getReal(), -2);
+    ASSERT_EQ(number3.getImag(), -2);
 }
 
-TEST(AritmeticTests, MultiplicationTest) {
+TEST(ArithmeticTests, MultiplicationTest) {
     ComplexNumber<int> number1(1, 2);
     ComplexNumber<int> number2(3, 4);
     ComplexNumber<int> number3 = number1 * number2;
-    ASSERT_EQ(number3.real, -5);
-    ASSERT_EQ(number3.imag, 10);
+    ASSERT_EQ(number3.getReal(), -5);
+    ASSERT_EQ(number3.getImag(), 10);
 }
 
-TEST(AritmeticTests, DivisionTestInt) {
+TEST(ArithmeticTests, DivisionTestInt) {
     ComplexNumber<int> number1(1, 2);
     ComplexNumber<int> number2(3, 4);
     ComplexNumber<int> number3 = number1 / number2;
-    ASSERT_EQ(number3.real, 0);
-    ASSERT_EQ(number3.imag, 0);
+    ASSERT_EQ(number3.getReal(), 0);
+    ASSERT_EQ(number3.getImag(), 0);
 }
-TEST(AritmeticTests, DivisionTestFloat) {
+TEST(ArithmeticTests, DivisionTestFloat) {
     ComplexNumber<float> number1(1.0, 2.0);
     ComplexNumber<float> number2(3.0, 4.0);
     ComplexNumber<float> number3 = number1 / number2;
-    ASSERT_EQ(number3.real, 0.44);
-    ASSERT_EQ(number3.imag, 0.08);
+    EXPECT_NEAR(number3.getReal(), 0.44, 0.0001);
+    EXPECT_NEAR(number3.getImag(), 0.08, 0.0001);
 }
 
-TEST(AritmeticAssignmentTests, AdditionAssignmentTest) {
+TEST(ArithmeticAssignmentTests, AdditionAssignmentTest) {
     ComplexNumber<int> number1(1, 2);
     ComplexNumber<int> number2(3, 4);
     number1 += number2;
-    ASSERT_EQ(number1.real, 4);
-    ASSERT_EQ(number1.imag, 6);
+    ASSERT_EQ(number1.getReal(), 4);
+    ASSERT_EQ(number1.getImag(), 6);
 }
-TEST(AritmeticAssignmentTests, SubstractionAssignmentTest) {
+TEST(ArithmeticAssignmentTests, SubstractionAssignmentTest) {
     ComplexNumber<int> number1(1, 2);
     ComplexNumber<int> number2(3, 4);
     number1 -= number2;
-    ASSERT_EQ(number1.real, -2);
-    ASSERT_EQ(number1.imag, -2);
+    ASSERT_EQ(number1.getReal(), -2);
+    ASSERT_EQ(number1.getImag(), -2);
 }
 
-TEST(AritmeticAssignmentTests, MultiplicationAssignmentTest) {
+TEST(ArithmeticAssignmentTests, MultiplicationAssignmentTest) {
     ComplexNumber<int> number1(1, 2);
     ComplexNumber<int> number2(3, 4);
     number1 *= number2;
-    ASSERT_EQ(number1.real, -5);
-    ASSERT_EQ(number1.imag, 10);
+    ASSERT_EQ(number1.getReal(), -5);
+    ASSERT_EQ(number1.getImag(), 10);
 }
 
-TEST(AritmeticAssignmentTests, DivisionAssignmentTestInt) {
+TEST(ArithmeticAssignmentTests, DivisionAssignmentTestInt) {
     ComplexNumber<int> number1(1, 2);
     ComplexNumber<int> number2(3, 4);
     number1 /= number2;
-    ASSERT_EQ(number1.real, 0);
-    ASSERT_EQ(number1.imag, 0);
+    ASSERT_EQ(number1.getReal(), 0);
+    ASSERT_EQ(number1.getImag(), 0);
 }
 
 TEST(PowerTests, PowerTestInt) {
     ComplexNumber<int> number1(1, 2);
     ComplexNumber<int> number2 = number1 ^ 2;
-    ASSERT_EQ(number2.real, -3);
-    ASSERT_EQ(number2.imag, 4);
+    ASSERT_EQ(number2.getReal(), -3);
+    ASSERT_EQ(number2.getImag(), 4);
 }
 
 TEST(PowerTests, PowerTestFloat) {
     ComplexNumber<float> number1(1.0, 2.0);
     ComplexNumber<float> number2 = number1 ^ 2;
-    ASSERT_EQ(number2.real, -3.0);
-    ASSERT_EQ(number2.imag, 4.0);
+    ASSERT_EQ(number2.getReal(), -3.0);
+    ASSERT_EQ(number2.getImag(), 4.0);
 }
 
 TEST(PowerAssignmentTests, PowerAssignmentTestInt) {
     ComplexNumber<int> number1(1, 2);
     number1 ^= 2;
-    ASSERT_EQ(number1.real, -3);
-    ASSERT_EQ(number1.imag, 4);
+    ASSERT_EQ(number1.getReal(), -3);
+    ASSERT_EQ(number1.getImag(), 4);
 }
 
 TEST(PowerAssignmentTests, PowerAssignmentTestFloat) {
     ComplexNumber<float> number1(1.0, 2.0);
     number1 ^= 2;
-    ASSERT_EQ(number1.real, -3.0);
-    ASSERT_EQ(number1.imag, 4.0);
+    ASSERT_EQ(number1.getReal(), -3.0);
+    ASSERT_EQ(number1.getImag(), 4.0);
 }
 
 TEST(EqualityTests, EqualityTestInt) {
@@ -151,12 +151,12 @@ TEST(EqualityTests, EqualityTestDouble2) {
 
 TEST(LengthTests, LengthTestInt) {
     ComplexNumber<int> number1(1, 2);
-    ASSERT_EQ(number1.length(), 2.23606797749979);
+    EXPECT_NEAR(number1.getLength(), 2.23606797749979, 0.0001);
 }
 
 TEST(LengthTests, LengthTestFloat) {
     ComplexNumber<float> number1(1.0, 2.0);
-    ASSERT_EQ(number1.length(), 2.236068);
+    EXPECT_NEAR(number1.getLength(), 2.23606797749979, 0.0001);
 }
 
 TEST(ConsoleOutputTests, ConsoleOutputTestInt) {
@@ -167,8 +167,8 @@ TEST(ConsoleOutputTests, ConsoleOutputTestInt) {
 }
 
 TEST(ConsoleOutputTests, ConsoleOutputTestFloat) {
-    ComplexNumber<float> number1(1.0, 2.0);
+    ComplexNumber<float> number1(1.11, 2.24);
     std::stringstream ss;
     ss << number1;
-    ASSERT_EQ(ss.str(), "1.00 + 2.00i");
+    ASSERT_EQ(ss.str(), "1.11 + 2.24i");
 }

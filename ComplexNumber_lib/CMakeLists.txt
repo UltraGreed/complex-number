@@ -1,7 +1,11 @@
 project(ComplexNumber_lib)
 
-set(SOURCE_FILES ComplexNumber.cpp)
+set(SOURCE_FILES ComplexNumber.tpp)
 
-set(HEADER_FILES ComplexNumber.h)
+add_library(ComplexNumber_lib STATIC ${SOURCE_FILES})
 
-add_library(ComplexNumber_lib STATIC ${SOURCE_FILES} ${HEADER_FILES})
+set_target_properties(
+        ComplexNumber_lib
+        PROPERTIES
+        LINKER_LANGUAGE CXX
+)
